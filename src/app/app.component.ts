@@ -1,26 +1,29 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'social_new';
   data: string = "";
-  response: string="";
+  response: string = "";
   
   constructor(private dataService: DataService) {}
   
-   onSubmit() {
-    this.dataService.sendData(this.data).subscribe(
-      response => {
-        console.log(response); // Log the response
-        this.response = response; // Store response in property
-      },
-      error => {
-        console.error('Error:', error); // Handle error if any
-      }
-    );
+  onSubmit() {
+	  console.log("before submit"+this.data);
+    this.dataService.sendData(this.data)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.response = res;
+        },
+        error: (e) => console.error(e)
+      });
   }
 }

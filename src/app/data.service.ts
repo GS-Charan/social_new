@@ -11,9 +11,9 @@ export class DataService {
   constructor(private http: HttpClient) {
 	  
    }
-   sendData({data}:any):Observable<any>
+   sendData(data:any):Observable<any>
    {
-	   return this.http.post<any>('http://localhost:8080/api/data', { data });
+	   return this.http.post('http://localhost:8080/api/data',  data,{responseType: 'text'});
 	   
    }
 }
