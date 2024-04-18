@@ -13,7 +13,7 @@ export class DataService {
    }
    sendData(data:any):Observable<any>
    {
-	   return this.http.post('http://localhost:8080/api/data',  data,{responseType: 'text'});
+	   return this.http.post('http://localhost:8080/api/name/send',  data,{responseType: 'text'});
 	   
    }
 }
