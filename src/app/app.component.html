@@ -7,4 +7,15 @@
 </div>
 
 <!-- Display response -->
-<div *ngIf="response">{{ response }}</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of response">
+      <td>{{ item.name }}</td>
+    </tr>
+  </tbody>
+</table>

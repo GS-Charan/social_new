@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     
   };
   title = 'social_new';
-  response: any = "";
+  response: any = {};
   
    
   constructor(private dataService: DataService) {}
@@ -34,9 +34,20 @@ export class AppComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.response = res;
+          
         },
         error: (e) => console.error(e)
       });
+      
+     this.dataService.recieveData()
+         .subscribe({
+			next: (res) => {
+          console.log(res);
+          this.response = res;
+          
+        }, error: (e) => console.error(e)
+			 
+		 });
+      
   }
 }
