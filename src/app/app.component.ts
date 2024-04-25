@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -8,16 +8,29 @@ import { of } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+	
+  jsondata = {
+    name: ''
+    
+  };
   title = 'social_new';
-  data: string = "";
-  response: string = "";
+  response: any = "";
   
+   
   constructor(private dataService: DataService) {}
-  
+  ngOnInit() {
+    
+  }
   onSubmit() {
-	  console.log("before submit"+this.data);
-    this.dataService.sendData(this.data)
+	  const data = {
+      name: this.jsondata.name,
+      
+    };
+	  
+	  console.log("before submit"+data);
+	  
+    this.dataService.sendData(data)
       .subscribe({
         next: (res) => {
           console.log(res);
