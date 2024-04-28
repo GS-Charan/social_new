@@ -6,16 +6,22 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { DataService } from './data.service';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { NewAccComponent } from './components/new-acc/new-acc.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    NewAccComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   providers: [
     DataService
