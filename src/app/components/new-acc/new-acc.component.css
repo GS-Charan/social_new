@@ -61,3 +61,10 @@ h3{
     margin-bottom: 5px; 
     font-weight: bold; 
 }
+#background{
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../../images/background.jpg);
+	
+	
+}

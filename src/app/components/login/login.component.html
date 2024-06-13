@@ -1,25 +1,77 @@
 <div id="login" class="col-md-2 text-center">
 
 <h3>Login</h3>
-    <form class="form-group">
+
+    <form class="form-group" *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      
+      
+      <div class="form-group">
     <label for="userid" >Name:</label>
-        <input type="text" placeholder="Enter Your Username" class="form-control" name="user" id="userid">
-    </form>
+        <input type="text" placeholder="Enter Your Username" class="form-control" name="user" id="userid" [(ngModel)]="form.username" required #username="ngModel">
     
-        
+    <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && username.invalid"
+        >
+          Username is required!
+        </div>
+    
+    </div>
+    
+    
+    
+        <div class="form-group">
     <label for="pwdid" >Password:</label>
-    <form class="form-group">
-        <input type="text" placeholder="Enter Your Password" class="form-control" name="password" id="pwdid">
-    </form>
+    
+        <input type="password" placeholder="Enter Your Password" class="form-control" name="password" id="pwdid" [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+    
+    
+    <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      
+    
+    </div>
+    
     
    <a routerLink="/new-acc" role="button">create new account</a>
     
-    <form class="form-group">
+    <div class="form-group">
         <button class="btn btn-primary" id="submit" type="submit">Login</button>
+        
+        
+        
+        
+        
+        </div>
+    
+    <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
     </form>
-    
-    
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{ roles }}.
+    </div>
 </div>
+<div id="background"></div>
 
 <div id=box class="col-md-2 text-center" >
 

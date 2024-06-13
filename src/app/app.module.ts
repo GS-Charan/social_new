@@ -9,12 +9,14 @@ import { DataService } from './data.service';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { NewAccComponent } from './components/new-acc/new-acc.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NewAccComponent
+    NewAccComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
