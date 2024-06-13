@@ -1,48 +1,59 @@
-<div id="1" class="col-md-6 top-center">
+<div id="1" class="text-left">
 <h1>Welcome to Charan's community board</h1>
-</div>
 
+</div>
+<div id="12" class="text-right">
+        <button class="btn btn-primary" (click)="logout()">LogOut</button>
+</div>
 <div id="login" class="col-md-2 text-center">
 
 
 <h5>give your positive message of the day below</h5>
 
-    <form class="form-group" 
-      >
-      
-      
-      <div class="form-group">
-    <label  ></label>
-        <input type="text" placeholder="Your message" class="form-control" name="text" id="txtid">
     
+        <form (ngSubmit)="onSubmit()">
     
+            <input type="text" placeholder="Your message" class="form-control" name="text" id="txtid" [(ngModel)]="jsondata.name">
     
-    </div>
-    
-    
-    
-       
-      
-    
+        <button class="btn btn-primary" id="submit" type="submit" >Post</button>
+        
+        
 
-    
-    
-   
-    
-    <div class="form-group">
-        <button class="btn btn-primary" id="submit" type="submit">Post</button>
         
         
-        
-        
-        
-        </div>
     
     
+          </form>
       
-    </form>
+    <table>
+  <thead>
+    <tr>
+      <th>responses</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of response">
+      <td>{{ item.name }}</td>
+      <td>{{ item.time }}</td>
+    </tr>
+  </tbody>
+</table>
     
 </div>
+
+
+
+
+
+ 
+
+   
+
+
+      
+  
+  
 <div id="background"></div>
 
 
